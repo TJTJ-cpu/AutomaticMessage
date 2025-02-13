@@ -8,7 +8,7 @@ import glob
 import thaisong
 
 
-SongListArr = ['ThaiPOP', 'ThaiRock']
+SongListArr = ['ThaiPOP', 'ThaiRock', "FastRandom"]
 Prefix = 'p!play '
 
 start = time.time()
@@ -48,11 +48,42 @@ def LoadSong(Playlist):
         for song in ThaiRock:
             songArr.append(song)
         PrintingSong(songArr)
+    elif Playlist == 'FastRandom':
+        songArr = GatherAllSongs()
+        PrintingSong3(songArr)
     else:
         Lists = open(Playlist + '.txt')
         for song in Lists:
             songArr.append(song)
         PrintingSong(songArr)
+
+def GatherAllSongs():
+    files = []
+    all_songs = []
+    cwd = os.getcwd()
+    subDir = 'Songs'
+    songPath = os.path.join(cwd, subDir)
+    for file in glob.glob("*.txt"):
+        files.append(file)
+        lists = open(file)
+        for song in lists:
+            all_songs.append(song)
+    print(f'Songs: {len(all_songs)}')
+    return all_songs
+        
+
+
+    songArr = []
+    cwd = os.getcwd()
+    subDir = 'Songs'
+    songPath = os.path.join(cwd, subDir)
+    for file in glob.glob(os.path.join(songPath, "*.txt")):
+        with open(file, "r", encoding="utf-8") as song_file:
+            songs = song_file.readlines()
+            songArr.extend([song.strip() for song in songs])
+    random.shuffle(songArr)
+    print(f"Total Songs Gathered: {len(songArr)}")
+    return songArr
 
 # NOTE FOR ME
 # make a func that gather all songs
@@ -110,6 +141,26 @@ def PrintingSong2(SongArr):
     seconds %= 60
     print(f"Time Taken: {min}:{seconds}")
 
+def PrintingSong3(SongArr):
+    global Prefix
+    count = 1
+    totalSong = len(SongArr)
+    random.shuffle(SongArr)
+    print(f'Number of Songs: {totalSong}')
+    time.sleep(3)
+    for song in SongArr:
+        command = Prefix + song
+        pyperclip.copy(command)
+        print(f"Song Count: {count} / {totalSong}  -  {song}")
+        press('ctrl')
+        press('v')
+        release('ctrl')
+        release('v')
+        time.sleep(0.2)
+        press('enter')
+        release('enter')
+        time.sleep(0.2)
+        count += 1
 
 def UserInput(songArr):
     count = len(songArr)
