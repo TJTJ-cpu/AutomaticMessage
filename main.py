@@ -98,9 +98,7 @@ def PrintingSong(SongArr):
     time.sleep(3)
     for song in SongArr:
         command = Prefix + song
-        # if count % 60 == 0:
-        #     time.sleep(7)
-        if count % 6 == 0:
+        if count % 6 == 0 and count > 20:
             time.sleep(4)
         pyperclip.copy(command)
         print(f"Song Count: {count} / {totalSong}  -  {song}")
