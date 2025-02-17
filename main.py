@@ -31,7 +31,17 @@ def GetAllFile():
 def DisplayMenu(SongListArr):
     count = 1
     for song in SongListArr:
-        print(f"{count}. {song}")
+        songCounts = 0
+        if song == 'ThaiPOP':
+            songCounts = len(ThaiPop)
+        elif song == 'ThaiRock':
+            songCounts = len(ThaiRock)
+        elif song == 'FastRandom':
+            songCounts = len(GatherAllSongs())
+        else:
+            with open(song + '.txt', 'r', encoding="utf-8") as f:
+                songCounts = sum(1 for _ in f)
+        print(f"{count}. {song} - {songCounts} songs")
         count += 1
     index = UserInput(SongListArr)
     Playlist = SongListArr[index]
@@ -68,7 +78,6 @@ def GatherAllSongs():
         lists = open(file)
         for song in lists:
             all_songs.append(song)
-    print(f'Songs: {len(all_songs)}')
     return all_songs
         
 
