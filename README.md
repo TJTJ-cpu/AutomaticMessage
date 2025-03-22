@@ -1,22 +1,12 @@
 # 🎵 Discord Song Automator  
 This is a small automation project for sending song commands. 
-It uses keyboard simulation to paste `p!play <song>` commands.
-
-## 📖 Table of Contents
-- [Features](#-features)
-- [Requirements](#-requirements)
-- [Setup](#-setup)
-- [How It Works](#-how-it-works)
-- [Customization](#-customization)
-- [Example](#-example)
----
+It copy the song name from .txt file and uses keyboard simulation to paste `p!play <song>` commands.
 
 ## 🌟 Features
 - Auto-sends song commands using `p!play <song name>`
-- For non ASCII add another python file (ThaiSong.py)
+- For non ASCII add another python file, example: ThaiSong.py
 - Automatically detects `.txt` playlists from the `Songs/` folder
-- Random song order every time for variety
-- Keyboard + clipboard automation with `keyboard` and `pyperclip`
+- Random song order every time 
 
 ---
 
@@ -24,9 +14,9 @@ It uses keyboard simulation to paste `p!play <song>` commands.
 
 Make sure you have Python installed, then install dependencies:
 
-```bash
-pip install keyboard pyperclip
-```
+   ```bash
+   pip install keyboard pyperclip
+   ```
 
 ---
 
@@ -34,20 +24,34 @@ pip install keyboard pyperclip
 
 1. **Clone the project**  
    ```bash
-   git clone https://github.com/yourusername/thai-song-automator.git
+   git clone https://github.com/TJTJ-cpu/AutomaticMessage
    cd thai-song-automator
    ```
 
 2. **Prepare the Songs folder**  
-   - Create a `Songs/` folder in the root directory.
-   - Add `.txt` files with one song title per line. These become selectable playlists!
+  - Create a new `.txt` file in `Songs/`.
+  - Add songs line by line (Recommend to add artist as well):
+    ```
+    Not Like Us - Kendrick Lamar
+    Song Two - Artist Name
+    Song Three - Artist Name
+    ```
 
 3. **Run the script**  
    ```bash
    python main.py
    ```
-
----
+   Main Menu :
+   ```
+   1. ThaiPOP
+   2. ThaiRock
+   3. FastRandom
+   4. ChillVibes
+   5. Party
+   ```
+   Choose the number then press enter.
+   
+   ---
 
 ## 🤖 How It Works
 
@@ -66,22 +70,13 @@ pip install keyboard pyperclip
   ```python
   Prefix = 'p!play '
   ```
-
-- **Add your own playlists:**  
-  - Create a new `.txt` file in `Songs/`.
-  - Add songs line by line (Recommend to add author as well):
-    ```
-    Not Like Us - Kendrick Lamar
-    Song Two - Artist Name
-    Song Three - Artist Name
-    ```
 - **Speed tuning:**  
   If the commands are sending too fast or too slow, you can adjust the delay times in `main.py`.  
   Look for `time.sleep()` lines and tweak the values:
   ```python
   time.sleep(0.5)  # Delay between songs
   ```
-
+  
 ---
 
 ## 📸 Example
