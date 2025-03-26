@@ -25,7 +25,6 @@ Make sure you have Python installed, then install dependencies:
 1. **Clone the project**  
    ```bash
    git clone https://github.com/TJTJ-cpu/AutomaticMessage
-   cd thai-song-automator
    ```
 
 2. **Prepare the Songs folder**  
