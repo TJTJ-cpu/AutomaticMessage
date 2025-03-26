@@ -41,6 +41,7 @@ Make sure you have Python installed, then install dependencies:
    python main.py
    ```
    Main Menu :
+   Your playlist will pop up.
    ```
    1. ThaiPOP
    2. ThaiRock
